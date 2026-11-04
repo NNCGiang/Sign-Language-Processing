@@ -1,0 +1,29 @@
+# Môi trường
+.venv/
+venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Dữ liệu & kết quả train
+dataset/
+hf_vsl/
+runs/
+arichve/
+models/
+
+# File nặng
+*.zip
+*.rar
+*.pt
+*.pth
+*.onnx
+*.mp4
+
+# Bí mật
+.env
+google-services.json
+
+# Flutter
+app/build/
+app/.dart_tool/

@@ -1,0 +1,19 @@
+# Python 3.10 – 3.12 khuyến nghị (Windows 10/11, Linux, macOS)
+# PyTorch: cài TRƯỚC theo hướng dẫn README (bản CUDA nếu có GPU NVIDIA)
+torch>=2.2
+torchvision>=0.17
+ultralytics>=8.4.0          # YOLO26
+mediapipe>=0.10.14          # Tasks API: HandLandmarker, FaceLandmarker
+opencv-python>=4.9
+numpy>=1.26
+pandas>=2.0
+scikit-learn>=1.3
+matplotlib>=3.8
+PyYAML>=6.0
+Pillow>=10.0
+PyQt5>=5.15
+edge-tts>=6.1               # TTS neural tiếng Việt (online)
+gTTS>=2.5                   # TTS dự phòng (online)
+pygame>=2.5                 # phát âm thanh
+# Tùy chọn — TTS tiếng Việt offline trên CPU:
+# vieneu>=3.1

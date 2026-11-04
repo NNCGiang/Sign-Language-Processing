@@ -1,0 +1,64 @@
+# Luật chuyển chuỗi nhãn ký hiệu (gloss) → câu tiếng Việt.
+#
+# phrases: khớp chuỗi gloss dài nhất trước. "text" là câu/cụm đầu ra,
+#          "end" là dấu câu kết thúc (. ! ?) — nếu có thì cụm này đứng thành một câu riêng.
+# Đây là luật do con người khai báo, KHÔNG phải mô hình dịch máy.
+# Hãy kiểm tra với người dùng ngôn ngữ ký hiệu trước khi thêm luật mới.
+
+phrases:
+  - gloss: [xin_chao]
+    text: "xin chào"
+    end: "!"
+  - gloss: [tam_biet]
+    text: "tạm biệt"
+    end: "!"
+  - gloss: [hen_gap_lai]
+    text: "hẹn gặp lại"
+    end: "!"
+  - gloss: [cam_on]
+    text: "cảm ơn"
+    end: "!"
+  - gloss: [cam_on, ban]
+    text: "cảm ơn bạn"
+    end: "!"
+  - gloss: [xin_loi]
+    text: "xin lỗi"
+    end: "."
+  - gloss: [toi, khoe]
+    text: "tôi khỏe"
+    end: "."
+  - gloss: [toi_khoe]
+    text: "tôi khỏe"
+    end: "."
+  - gloss: [ban, khoe, khong]
+    text: "bạn có khỏe không"
+    end: "?"
+  # VSL thường đặt từ để hỏi cuối câu, giống tiếng Việt ở các mẫu sau:
+  - gloss: [ten, ban, la_gi]
+    text: "tên bạn là gì"
+    end: "?"
+  - gloss: [ban, ten, la_gi]
+    text: "bạn tên là gì"
+    end: "?"
+  - gloss: [ban, bao_nhieu_tuoi]
+    text: "bạn bao nhiêu tuổi"
+    end: "?"
+  - gloss: [ban, o_dau]
+    text: "bạn ở đâu"
+    end: "?"
+  # Phủ định cuối câu trong VSL → đưa "không" lên trước động từ
+  - gloss: [toi, an, khong]
+    text: "tôi không ăn"
+    end: "."
+  - gloss: [toi, di, hoc]
+    text: "tôi đi học"
+    end: "."
+  - gloss: [toi, yeu, gia_dinh]
+    text: "tôi yêu gia đình"
+    end: "."
+
+# Nếu câu (phần còn lại sau khi khớp phrases) chứa một trong các nhãn này → kết thúc bằng "?"
+question_labels: [la_gi, o_dau, bao_nhieu_tuoi]
+
+# Nhãn chỉ mang nghĩa câu cảm thán → "!"
+exclamation_labels: [xin_chao, tam_biet, cam_on, hen_gap_lai]

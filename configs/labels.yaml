@@ -1,0 +1,102 @@
+# Ánh xạ nhãn → tiếng Việt (tự sinh bởi tools/import_vsl_datasets.py, có thể sửa tay)
+_nen: ''
+an: ăn
+an_mung: ăn mừng
+an_ui: an ủi
+ap_dung: áp dụng
+ban: bạn
+ban_khoan: băn khoăn
+ban_ngay: ban ngày
+ban_tay: bàn tay
+ban_than: bạn thân
+bao_nhieu_tuoi: bao nhiêu tuổi
+be_mac: bế mạc
+benh_vien: bệnh viện
+biet: biết
+bieu_tang: biếu tặng
+bo_y_te: bộ y tế
+ca: cá
+cam_do: cám dỗ
+cam_on: cảm ơn
+cham_lai: chậm lại
+chan: chân
+chao: chào
+chay: chạy
+chieu: chiều
+cho: cho
+chung_ta: chúng ta
+co: có
+co_the: có thể
+con_gau: con gấu
+cuu: cứu
+dau: đâu
+day_do: dạy dỗ
+de: dễ
+dep: đẹp
+di: đi
+dong_y: đồng ý
+ghet: ghét
+gia_dinh: gia đình
+giup: giúp
+giup_do: giúp đỡ
+ham_mo: hâm mộ
+hen_gap_lai: hẹn gặp lại
+ho: ho
+hoc: học
+hom_nay: hôm nay
+hy_sinh: hy sinh
+ket_hon: kết hôn
+khai_bao: khai báo
+khau_trang: khẩu trang
+khoc: khóc
+khoe: khỏe
+khong: không
+khu_cach_ly: khu cách ly
+la_gi: là gì
+lay_benh: lây bệnh
+moi_vao: mời vào
+mua: mua
+nang: nặng
+nghe: nghe
+nghi_ngoi: nghỉ ngơi
+nha: nhà
+nhin: nhìn
+nho: nhớ
+noi: nói
+noi_xau: nói xấu
+non_oi: nôn ói
+nuoc: nước
+o_dau: ở đâu
+o_to: ô tô
+phat: phạt
+phia_sau: phía sau
+phong_van: phỏng vấn
+rau: rau
+re_phai: rẽ phải
+re_trai: rẽ trái
+san_se: san sẻ
+su_dung: sử dụng
+tam_biet: tạm biệt
+tap_luyen: tập luyện
+ten: tên
+tham: thăm
+that_lac: thất lạc
+thich: thích
+thuc_an: thức ăn
+thuc_day: thức dậy
+thuong: thương
+toi: tôi
+toi_khoe: tôi khỏe
+trua: trưa
+truong: trường
+truong_hoc: trường học
+uong: uống
+vang_loi: vâng lời
+xa: xa
+xe_dap: xe đạp
+xin_chao: xin chào
+xin_loi: xin lỗi
+xin_phep: xin phép
+xuat_vien: xuất viện
+xuc_dong: xúc động
+yeu: yêu

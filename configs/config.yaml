@@ -1,0 +1,98 @@
+# Cấu hình chung cho hệ thống nhận diện ngôn ngữ ký hiệu Việt Nam.
+# Mọi đường dẫn tương đối được tính từ thư mục gốc dự án.
+
+project:
+  seed: 42
+  log_level: INFO
+
+paths:
+  dataset_dir: dataset
+  features_dir: runs/features
+  checkpoints_dir: models/checkpoints
+  yolo_dir: models/yolo26
+  mediapipe_dir: models/mediapipe
+  runs_dir: runs
+  labels_file: configs/labels.yaml
+  grammar_file: configs/grammar.yaml
+
+video:
+  extensions: [".mp4", ".avi", ".mov"]
+  target_fps: 15          # chuẩn hóa FPS khi trích đặc trưng từ file video
+  max_side: 640           # cạnh dài nhất của frame sau khi resize
+  min_frames: 8           # video ngắn hơn sẽ bị loại
+  min_brightness: 8.0     # frame có độ sáng trung bình thấp hơn coi là frame lỗi/đen
+  min_std: 2.0            # frame gần như đồng màu (lỗi giải mã) bị loại
+
+yolo:
+  pose_weights: yolo26n-pose.pt   # n/s/m/l/x — tự tải về models/yolo26/
+  conf: 0.35
+  imgsz: 640
+  device: auto                    # auto | cpu | cuda | 0
+  detect_interval: 1              # webcam: chạy YOLO mỗi N frame, giữa chừng dùng lại ROI
+
+hands:
+  backend: mediapipe              # mediapipe | yolo | none
+  use_person_roi: true            # chạy bộ phát hiện tay trên vùng người do YOLO26 cắt ra
+  roi_margin: 0.25
+  min_detection_confidence: 0.4
+  min_presence_confidence: 0.4
+  min_tracking_confidence: 0.4
+  mediapipe_model: hand_landmarker.task
+  mediapipe_url: https://storage.googleapis.com/mediapipe-models/hand_landmarker/hand_landmarker/float16/latest/hand_landmarker.task
+  yolo_hand_weights: yolo26n-hand-pose.pt   # tạo bằng: python train.py yolo-hands
+  yolo_hand_conf: 0.3
+
+face:
+  enabled: true
+  mediapipe_model: face_landmarker.task
+  mediapipe_url: https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/latest/face_landmarker.task
+
+sequence:
+  length: 48              # số bước thời gian sau khi nội suy
+  use_velocity: true      # nối thêm đạo hàm theo thời gian
+
+model:
+  rnn_type: gru           # gru | lstm
+  proj_dim: 256
+  hidden_size: 128
+  num_layers: 2
+  bidirectional: true
+  dropout: 0.3
+
+training:
+  epochs: 150
+  batch_size: 32
+  lr: 0.001
+  weight_decay: 0.0001
+  patience: 25            # early stopping theo val loss
+  num_workers: 0          # 0 an toàn nhất trên Windows
+  class_weights: true
+  label_smoothing: 0.05
+  augment:
+    enabled: true
+    time_crop: [0.8, 1.0]     # giữ ngẫu nhiên 80–100% độ dài
+    scale: [0.9, 1.1]
+    rotate_deg: 10
+    shift: 0.1
+    noise_std: 0.01
+    hand_dropout: 0.05        # xác suất xóa tay ở một frame (mô phỏng mất phát hiện)
+
+inference:
+  confidence_threshold: 0.70
+  top_k: 3
+  window_sec: 2.0           # độ dài cửa sổ trượt (nên ≈ độ dài clip huấn luyện)
+  min_window_sec: 0.8
+  stride_frames: 3          # phân loại lại mỗi N frame
+  confirm_windows: 3        # số cửa sổ liên tiếp phải đồng ý
+  cooldown_sec: 1.0         # không nhận lại cùng nhãn trong khoảng này
+  idle_sec: 1.2             # không thấy tay trong khoảng này → kết thúc câu
+  background_labels: ["_nen"]
+
+tts:
+  engine_order: [edge, gtts, vieneu]   # thử lần lượt, engine lỗi sẽ được bỏ qua
+  edge_voice: vi-VN-HoaiMyNeural       # hoặc vi-VN-NamMinhNeural
+  edge_rate: "+0%"
+  gtts_lang: vi
+  vieneu_voice: null
+  cache_dir: runs/audio
+  auto_speak: true                     # tự đọc khi kết thúc câu
